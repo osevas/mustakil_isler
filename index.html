@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Müstakil İşler | Nefer &amp; Bayağı Zevkler Akademisi</title>
+<meta name="description" content="Müstakil İşler — Nefer tiyatro oyunu ve Bayağı Zevkler Akademisi podcast'i.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,500&family=Oswald:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#211f18;
+    --paper:#faf6ec;
+    --olive:#c9c28a;
+    --olive-dark:#9a9463;
+    --smoke:#6c6a5f;
+    --line: rgba(33,31,24,.14);
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Oswald', sans-serif;
+    font-weight:300;
+    overflow-x:hidden;
+  }
+  a{ color:inherit; }
+  img{ max-width:100%; display:block; }
+
+  ::selection{ background:var(--olive); color:var(--ink); }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed; top:0; left:0; right:0; z-index:50;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 6vw;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+    letter-spacing:.12em;
+  }
+  header .brand{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.1rem;
+    text-transform:none;
+    color:var(--ink);
+  }
+  header nav a{
+    text-decoration:none;
+    margin-left:28px;
+    font-size:.72rem;
+    text-transform:uppercase;
+    letter-spacing:.18em;
+    color:var(--ink);
+    opacity:.75;
+    transition:opacity .25s ease;
+  }
+  header nav a:hover{ opacity:1; }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    position:relative;
+    padding:100px 6vw 80px;
+    background:var(--paper);
+    border-bottom:1px solid var(--line);
+  }
+  .hero::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(0,0,0,.025) 0px, rgba(0,0,0,.025) 1px, transparent 1px, transparent 3px);
+    pointer-events:none;
+  }
+  .hero .eyebrow{
+    font-size:.75rem;
+    letter-spacing:.4em;
+    text-transform:uppercase;
+    color:var(--olive);
+    margin-bottom:22px;
+  }
+  .hero h1{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size:clamp(2.8rem, 9vw, 7.5rem);
+    line-height:1;
+    margin:0;
+    letter-spacing:.02em;
+    color:var(--ink);
+  }
+  .hero h1 span{ font-style:italic; font-weight:400; color:var(--olive); }
+  .hero p.tagline{
+    margin-top:26px;
+    max-width:560px;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.35rem;
+    color:var(--smoke);
+  }
+  .scroll-cue{
+    position:absolute; bottom:36px; left:50%; transform:translateX(-50%);
+    font-size:.65rem; letter-spacing:.3em; text-transform:uppercase;
+    color:var(--smoke);
+    display:flex; flex-direction:column; align-items:center; gap:10px;
+  }
+  .scroll-cue .bar{
+    width:1px; height:44px; background:var(--olive);
+    animation:pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes pulse{
+    0%,100%{ transform:scaleY(1); opacity:.4; }
+    50%{ transform:scaleY(1.3); opacity:1; }
+  }
+
+  /* ---------- SECTION SHELL ---------- */
+  section.work{
+    position:relative;
+    padding:130px 6vw;
+    border-bottom:1px solid var(--line);
+  }
+  .work .label{
+    font-size:.72rem;
+    letter-spacing:.4em;
+    text-transform:uppercase;
+    color:var(--olive);
+    margin-bottom:18px;
+  }
+  .work .grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:6vw;
+    align-items:center;
+  }
+  .work .copy h2{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:600;
+    font-size:clamp(2.4rem, 5vw, 4.2rem);
+    margin:0 0 20px;
+  }
+  .work .copy .meta{
+    font-size:.95rem;
+    line-height:2;
+    color:var(--smoke);
+    margin-bottom:28px;
+  }
+  .work .copy .meta strong{ color:var(--ink); font-weight:600; }
+  .work .copy p.desc{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.25rem;
+    line-height:1.7;
+    color:#4a4838;
+    margin-bottom:34px;
+    max-width:46ch;
+  }
+
+  .social-row{
+    display:flex; flex-wrap:wrap; gap:14px;
+  }
+  .social-btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:13px 22px;
+    border:1px solid var(--olive-dark);
+    text-decoration:none;
+    text-transform:uppercase;
+    font-size:.72rem;
+    letter-spacing:.18em;
+    color:var(--ink);
+    background:transparent;
+    transition:background .3s ease, color .3s ease, transform .3s ease;
+  }
+  .social-btn:hover{
+    background:var(--olive);
+    color:var(--ink);
+    transform:translateY(-2px);
+  }
+  .social-btn svg{ width:16px; height:16px; fill:currentColor; }
+
+  /* poster frame */
+  .poster-frame{
+    position:relative;
+    isolation:isolate;
+    max-width:360px;
+    margin:0 auto;
+  }
+  .poster-frame::before{
+    content:"";
+    position:absolute;
+    inset:-14px;
+    border:1px solid var(--olive-dark);
+    z-index:-1;
+  }
+  .poster-frame{
+    background:var(--paper);
+    padding:18px;
+  }
+  .poster-frame img{
+    width:100%;
+    filter:grayscale(15%) contrast(1.05);
+    transition:filter .4s ease, transform .6s ease;
+  }
+  .poster-frame:hover img{
+    filter:grayscale(0%) contrast(1.1);
+    transform:scale(1.015);
+  }
+
+  /* alternate layout for second product */
+  #podcast .grid{ grid-template-columns:1fr 1fr; }
+  #podcast .poster-frame::before{ border-color:var(--olive); }
+  #podcast .poster-frame img{ filter:none; }
+
+  @media (max-width: 860px){
+    .work .grid{ grid-template-columns:1fr; }
+    #podcast .grid .copy{ order:2; }
+    #podcast .grid .poster-frame{ order:1; }
+  }
+
+  /* ---------- ABOUT / FOOTER ---------- */
+  .about{
+    padding:110px 6vw;
+    text-align:center;
+    background:var(--paper);
+  }
+  .about .label{
+    font-size:.72rem; letter-spacing:.4em; text-transform:uppercase; color:var(--olive-dark); margin-bottom:22px;
+  }
+  .about p{
+    max-width:640px;
+    margin:0 auto;
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.5rem;
+    line-height:1.7;
+    color:#3a3830;
+  }
+
+  footer{
+    padding:50px 6vw 40px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:16px;
+    align-items:center;
+    justify-content:space-between;
+    border-top:1px solid var(--line);
+    font-size:.72rem;
+    letter-spacing:.1em;
+    color:var(--smoke);
+    text-transform:uppercase;
+  }
+  footer .brand{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    text-transform:none;
+    color:var(--ink);
+    font-size:1rem;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="brand">Müstakil İşler</div>
+  <nav>
+    <a href="#nefer">Nefer</a>
+    <a href="#podcast">Podcast</a>
+    <a href="#about">Hakkımızda</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">Tiyatro &middot; Ses &middot; Anlatı</div>
+  <h1>Müstakil <span>İşler</span></h1>
+  <p class="tagline">Sahnede ve kulaklıkta bağımsız işler üretiyoruz.</p>
+  <div class="scroll-cue">
+    <span>Keşfet</span>
+    <div class="bar"></div>
+  </div>
+</section>
+
+<section class="work" id="nefer">
+  <div class="grid">
+    <div class="poster-frame">
+      <img src="images/nefer/nefer.png" alt="Nefer tiyatro oyunu afişi">
+    </div>
+    <div class="copy">
+      <div class="label">Tiyatro Oyunu</div>
+      <h2>Nefer</h2>
+      <div class="meta">
+        <div>Yazan: <strong>Canan Akyüz</strong></div>
+        <div>Yöneten: <strong>Olga Ünal</strong></div>
+        <div>Oynayan: <strong>Bartu Ayaz</strong></div>
+        <div>Yapım: <strong>Tiyatropia</strong></div>
+      </div>
+      <p class="desc">Canan Akyüz'ün "Elemge" romanından sahneye taşınan <em>Nefer</em>, tek kişilik oyunuyla içe dönük ve çarpıcı bir yüzleşme anlatıyor.</p>
+      <div class="social-row">
+        <a class="social-btn" href="https://www.instagram.com/nefer_oyun/" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2.1.26 2.8.56.8.3 1.4.7 2 1.3.6.6 1 1.2 1.3 2 .3.7.5 1.6.6 2.8.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 2.1-.6 2.8-.3.8-.7 1.4-1.3 2-.6.6-1.2 1-2 1.3-.7.3-1.6.5-2.8.6-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2.1-.3-2.8-.6-.8-.3-1.4-.7-2-1.3-.6-.6-1-1.2-1.3-2-.3-.7-.5-1.6-.6-2.8C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-2.1.6-2.8.3-.8.7-1.4 1.3-2 .6-.6 1.2-1 2-1.3.7-.3 1.6-.5 2.8-.6C8.4 2.2 8.8 2.2 12 2.2m0 2c-3.1 0-3.5 0-4.7.1-1 .05-1.6.2-1.9.35-.5.2-.8.4-1.2.8-.4.4-.6.7-.8 1.2-.15.35-.3.95-.35 1.9C3 8.5 3 8.9 3 12s0 3.5.1 4.7c.05 1 .2 1.6.35 1.9.2.5.4.8.8 1.2.4.4.7.6 1.2.8.35.15.95.3 1.9.35C8.5 21 8.9 21 12 21s3.5 0 4.7-.1c1-.05 1.6-.2 1.9-.35.5-.2.8-.4 1.2-.8.4-.4.6-.7.8-1.2.15-.35.3-.95.35-1.9.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.05-1-.2-1.6-.35-1.9-.2-.5-.4-.8-.8-1.2-.4-.4-.7-.6-1.2-.8-.35-.15-.95-.3-1.9-.35C15.5 4.2 15.1 4.2 12 4.2Zm0 3.4a4.4 4.4 0 1 1 0 8.8 4.4 4.4 0 0 1 0-8.8Zm0 2a2.4 2.4 0 1 0 0 4.8 2.4 2.4 0 0 0 0-4.8Zm5.6-2.6a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>
+          Instagram'da Takip Et
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="work" id="podcast">
+  <div class="grid">
+    <div class="copy">
+      <div class="label">Podcast</div>
+      <h2>Bayağı Zevkler Akademisi</h2>
+      <p class="desc">"Bayağı olanın içinden, görünenden fazlasının izini sürüyoruz." Popüler kültürü, gündelik zevkleri ve arka planlarındaki hikayeleri konuşan bir sohbet podcast'i.</p>
+      <div class="social-row">
+        <a class="social-btn" href="https://www.instagram.com/bayagizevklerakademisi/" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.9.07 1.2.06 2.1.26 2.8.56.8.3 1.4.7 2 1.3.6.6 1 1.2 1.3 2 .3.7.5 1.6.6 2.8.1 1.3.1 1.7.1 4.9s0 3.6-.1 4.9c-.1 1.2-.3 2.1-.6 2.8-.3.8-.7 1.4-1.3 2-.6.6-1.2 1-2 1.3-.7.3-1.6.5-2.8.6-1.3.1-1.7.1-4.9.1s-3.6 0-4.9-.1c-1.2-.1-2.1-.3-2.8-.6-.8-.3-1.4-.7-2-1.3-.6-.6-1-1.2-1.3-2-.3-.7-.5-1.6-.6-2.8C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.9c.1-1.2.3-2.1.6-2.8.3-.8.7-1.4 1.3-2 .6-.6 1.2-1 2-1.3.7-.3 1.6-.5 2.8-.6C8.4 2.2 8.8 2.2 12 2.2m0 2c-3.1 0-3.5 0-4.7.1-1 .05-1.6.2-1.9.35-.5.2-.8.4-1.2.8-.4.4-.6.7-.8 1.2-.15.35-.3.95-.35 1.9C3 8.5 3 8.9 3 12s0 3.5.1 4.7c.05 1 .2 1.6.35 1.9.2.5.4.8.8 1.2.4.4.7.6 1.2.8.35.15.95.3 1.9.35C8.5 21 8.9 21 12 21s3.5 0 4.7-.1c1-.05 1.6-.2 1.9-.35.5-.2.8-.4 1.2-.8.4-.4.6-.7.8-1.2.15-.35.3-.95.35-1.9.1-1.2.1-1.6.1-4.7s0-3.5-.1-4.7c-.05-1-.2-1.6-.35-1.9-.2-.5-.4-.8-.8-1.2-.4-.4-.7-.6-1.2-.8-.35-.15-.95-.3-1.9-.35C15.5 4.2 15.1 4.2 12 4.2Zm0 3.4a4.4 4.4 0 1 1 0 8.8 4.4 4.4 0 0 1 0-8.8Zm0 2a2.4 2.4 0 1 0 0 4.8 2.4 2.4 0 0 0 0-4.8Zm5.6-2.6a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"/></svg>
+          Instagram
+        </a>
+        <a class="social-btn" href="https://open.spotify.com/show/6dT9xYyvdzd3s9KHZPkQAf?si=0ff09bebe73a4739" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm4.59 14.4a.62.62 0 0 1-.86.2c-2.36-1.44-5.33-1.77-8.83-.97a.62.62 0 1 1-.28-1.21c3.83-.88 7.12-.5 9.77 1.11.3.18.4.57.2.87Zm1.22-2.72a.78.78 0 0 1-1.07.26c-2.7-1.66-6.82-2.14-10.02-1.17a.78.78 0 1 1-.45-1.49c3.65-1.1 8.19-.57 11.28 1.33.37.23.49.72.26 1.07Zm.1-2.83c-3.24-1.92-8.6-2.1-11.7-1.16a.93.93 0 1 1-.54-1.78c3.56-1.08 9.47-.87 13.2 1.34a.93.93 0 0 1-.96 1.6Z"/></svg>
+          Spotify
+        </a>
+        <a class="social-btn" href="https://www.youtube.com/@bayagizevklerakademisi" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24"><path d="M23 12s0-3.6-.46-5.3a2.9 2.9 0 0 0-2-2C18.9 4.2 12 4.2 12 4.2s-6.9 0-8.54.5a2.9 2.9 0 0 0-2 2C1 8.4 1 12 1 12s0 3.6.46 5.3a2.9 2.9 0 0 0 2 2c1.64.5 8.54.5 8.54.5s6.9 0 8.54-.5a2.9 2.9 0 0 0 2-2C23 15.6 23 12 23 12ZM9.8 15.5v-7l6.2 3.5-6.2 3.5Z"/></svg>
+          YouTube
+        </a>
+      </div>
+    </div>
+    <div class="poster-frame">
+      <img src="images/bayagi_zevkler_akademisi/bayagi_zevkler_akademisi.png" alt="Bayağı Zevkler Akademisi logosu">
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="label">Hakkımızda</div>
+  <p>Müstakil İşleri, sahne ve sesi buluşturan bağımsız bir üretim çatısıdır. Her iş, kendi başına özgür ve müstakildir.</p>
+</section>
+
+<footer>
+  <div class="brand">Müstakil İşler</div>
+  <div>&copy; 2026 Müstakil İşler. Tüm hakları saklıdır.</div>
+</footer>
+
+</body>
+</html>
